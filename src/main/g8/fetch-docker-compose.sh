@@ -12,4 +12,5 @@ set -u
 # abort when a pipe failed = bash only: doesn't work in POSIX sh
 if [ "\${BASH:-}" = '/bin/bash' ]; then set -o pipefail; fi
 
+git init
 git submodule add https://lgitapp01.mnt.fr/data-engine/docker-compose docker-compose
