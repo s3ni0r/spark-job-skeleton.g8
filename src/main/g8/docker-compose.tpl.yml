@@ -1,0 +1,10 @@
+version: "3"
+services:
+  \${SERVICE_NAME}:
+    image: \${SERVICE_NAME}:\${VERSION}<localBuild>
+    hostname: \${SERVICE_NAME}
+    networks:
+      - yarn-cluster
+networks:
+  yarn-cluster:
+    external: true

@@ -1,0 +1,13 @@
+.idea
+target/
+*.class
+*.jar
+*.log
+*.iml
+.classpath
+.env
+.sbtopts
+.bloop/
+.metals/
+data/*
+!data/.gitkeep
