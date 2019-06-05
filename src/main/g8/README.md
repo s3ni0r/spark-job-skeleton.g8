@@ -1,4 +1,13 @@
-# cotisations
+# $name$
+
+# prerequisite
+
+## Fetch dockerfile and some resources for building custom hadoop version docker images
+```bash
+# This will init a git repository and fetch neccessary files from gitlab as a git submodule under docker-compose folder
+chmod +x ./fetch-docker-compose.sh && ./fetch-docker-compose.sh
+```
+
 # how to run
 
 ```bash
