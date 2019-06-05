@@ -41,7 +41,7 @@ object Commons {
       new Dockerfile {
         val artifact: File     = AssemblyKeys.assembly.value
         val artifactTargetPath = s"/app/\${artifact.name}"
-        from("mnt/spark-submit:latest")
+        from("mnt/spark-shell:latest")
         add(artifact, artifactTargetPath)
         entryPoint(
           "/spark/bin/spark-submit",

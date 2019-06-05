@@ -8,6 +8,11 @@
 chmod +x ./fetch-docker-compose.sh && ./fetch-docker-compose.sh
 ```
 
+## add these localhost hosts aliases to /etc/hosts
+```bash
+echo "127.0.0.1       namenode datanode resourcemanager nodemanager nodemanager-1 nodemanager-2 nodemanager-3 historyserver spark-master spark-worker spark-history" > /etc/hosts
+```
+
 # how to run
 
 ```bash
