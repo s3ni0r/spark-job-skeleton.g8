@@ -9,15 +9,15 @@ services:
       - yarn-cluster
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
-      - ./data:/data:rw
-      - ./docker-compose/scripts/data:/scripts:rw
+      - ./$hdfsDirMount$:/data:rw
+      - ./$cluster$/scripts:/scripts:rw
     environment:
-      - CLUSTER_NAME=test
+      - CLUSTER_NAME=dev
     ports:
       - 9870:9870
       - 9000:9000
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.1.1-java8
@@ -32,8 +32,8 @@ services:
     ports:
       - 9864:9864
     env_file:
-      - ./docker-compose/hadoop.env
-  
+      - ./$cluster$/conf/hadoop.env
+
   resourcemanager:
     image: s4ni0r/resourcemanager:3.1.1
     container_name: resourcemanager
@@ -48,7 +48,7 @@ services:
     ports:
       - 8088:8088
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
 
   nodemanager-1:
@@ -63,7 +63,7 @@ services:
     ports:
       - "8041:8041"
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
   nodemanager-2:
     image: s4ni0r/nodemanager:3.1.1
@@ -77,7 +77,7 @@ services:
     ports:
       - "8042:8042"
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
   nodemanager-3:
     image: s4ni0r/nodemanager:3.1.1
@@ -91,7 +91,7 @@ services:
     ports:
       - "8043:8043"
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
   historyserver:
     image: bde2020/hadoop-historyserver:2.0.0-hadoop3.1.1-java8
@@ -106,12 +106,10 @@ services:
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
   spark-history:
-    build:
-      context: ./docker-compose/spark-history
-    image: mnt/spark-history
+    image: s4ni0r/spark-history:2.3.2
     container_name: spark-history
     hostname: spark-history
     networks:
@@ -119,12 +117,10 @@ services:
     ports:
       - 18080:18080
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
   spark-shell:
-    build:
-      context: ./docker-compose/spark-shell
-    image: mnt/spark-shell
+    image: s4ni0r/spark-shell:2.3.2
     container_name: spark-shell
     hostname: spark-shell
     networks:
@@ -134,7 +130,7 @@ services:
       YARN_CONF_resourcemanager_address: "resourcemanager:8032"
       YARN_CONF_yarn_nodemanager_vmem__check__enabled: "false"
     env_file:
-      - ./docker-compose/hadoop.env
+      - ./$cluster$/conf/hadoop.env
 
 volumes:
   hadoop_namenode:
