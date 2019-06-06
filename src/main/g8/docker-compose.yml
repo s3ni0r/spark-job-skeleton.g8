@@ -35,7 +35,7 @@ services:
       - ./docker-compose/hadoop.env
   
   resourcemanager:
-    image: mnt/resourcemanager
+    image: s4ni0r/resourcemanager:3.1.1
     container_name: resourcemanager
     hostname: resourcemanager
     networks:
@@ -52,7 +52,7 @@ services:
 
 
   nodemanager-1:
-    image: mnt/nodemanager
+    image: s4ni0r/nodemanager:3.1.1
     container_name: nodemanager-1
     hostname: nodemanager-1
     networks:
@@ -66,7 +66,7 @@ services:
       - ./docker-compose/hadoop.env
 
   nodemanager-2:
-    image: mnt/nodemanager
+    image: s4ni0r/nodemanager:3.1.1
     container_name: nodemanager-2
     hostname: nodemanager-2
     networks:
@@ -80,7 +80,7 @@ services:
       - ./docker-compose/hadoop.env
 
   nodemanager-3:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.1.1-java8
+    image: s4ni0r/nodemanager:3.1.1
     container_name: nodemanager-3
     hostname: nodemanager-3
     networks:

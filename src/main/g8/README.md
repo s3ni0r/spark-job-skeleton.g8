@@ -2,13 +2,7 @@
 
 # prerequisite
 
-## Fetch dockerfile and some resources for building custom hadoop version docker images
-```bash
-# This will init a git repository and fetch neccessary files from gitlab as a git submodule under docker-compose folder
-chmod +x ./fetch-docker-compose.sh && ./fetch-docker-compose.sh
-```
-
-## add these localhost hosts aliases to /etc/hosts
+## add these localhost aliases to /etc/hosts
 ```bash
 echo "127.0.0.1       namenode datanode resourcemanager nodemanager nodemanager-1 nodemanager-2 nodemanager-3 historyserver spark-master spark-worker spark-history" > /etc/hosts
 ```
@@ -16,12 +10,13 @@ echo "127.0.0.1       namenode datanode resourcemanager nodemanager nodemanager-
 # how to run
 
 ```bash
-# Build core images once
-cd docker-compose/hadoop-latest && make rebuild && cd -
-# Build and start the cluster
-docker-compose up --build -d
-# Or start up the cluster if already has been built
+# start up the cluster if already has been built
 docker-compose up -d
+```
+
+# Load data into hdfs
+
+```bash
 # Load dev data placed in the data directory into hdfs
 docker exec -it namenode /scripts/hdfs-loader.sh
 ```
