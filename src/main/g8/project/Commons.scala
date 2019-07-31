@@ -46,7 +46,7 @@ object Commons {
         entryPoint(
           "/spark/bin/spark-submit",
           "--class",
-          "mnt.Application",
+          "example.Application",
           "--master",
           "yarn",
           "--deploy-mode",

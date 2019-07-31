@@ -1,4 +1,4 @@
-package mnt
+package example
 import org.apache.spark.sql.SparkSession
 
 object Application {

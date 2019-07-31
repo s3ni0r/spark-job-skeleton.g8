@@ -11,7 +11,7 @@ You should only need to clone this project if you are modifying the giter8 templ
 If you want to create a project:
 
 ```bash
-g8 https://lgitapp01.mnt.fr/data-engine/spark-job-skeleton.g8
+g8 https://github.com/s3ni0r/spark-job-skeleton.g8
 ```
 
 ## Running locally

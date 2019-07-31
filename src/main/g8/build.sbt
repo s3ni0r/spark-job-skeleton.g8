@@ -25,3 +25,6 @@ lazy val sparkApps = project
     sbtdocker.DockerPlugin,
     DockerComposePlugin
   )
+
+fork in Test := true
+parallelExecution in Test := false
