@@ -1,5 +1,29 @@
 # $name$
 
+# Main Goal
+
+Create a local but iso to production environnement to be as autonomous as possible while working on spark projects.
+
+# How ?
+
+this project contain all needed configuration files to create : 
+
+- [X] Dockerized environnement
+- [X] Local but a real distributed environnement
+    - 1 Namenode
+    - 1 Datanode (to increase as you wish)
+    - Yarn resource manager
+    - 3 Yarn node managers
+    - Yarn hitory server
+    - Spark history
+    - Spark shell
+- [X] Line up with exact Hadoop components version on production
+- [X] Deployment to dockerized cluster via sbt command line
+- [X] Mount data to hdfs via docker volumes from withing project folder
+- [X] Access spark history webui for inspection :)
+- [X] Access Yarn logs for debugging :)
+- [X] Access to Spark shell for fiddling :)
+
 # prerequisite
 
 ## add these localhost aliases to /etc/hosts
