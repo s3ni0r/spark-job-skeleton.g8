@@ -37,13 +37,15 @@ echo "127.0.0.1       namenode datanode resourcemanager nodemanager nodemanager-
 # start up the cluster if already has been built
 docker-compose up -d
 ```
+![cluster docker containers](./images/docker-compose-up.png "cluster docker containers")
 
 # Load data into hdfs
 
 ```bash
 # Load dev data placed in the data directory into hdfs
-docker exec -it namenode /scripts/hdfs-loader.sh
+docker exec -it namenode bash /scripts/hdfs-loader.sh
 ```
+![Hdfs data load](./images/hdfs-data-load.png "Hdfs data load")
 
 # Run spark job in the cluster via sbt
 
@@ -51,30 +53,35 @@ docker exec -it namenode /scripts/hdfs-loader.sh
 sbt
 ;clean;reload;compile;docker;dockerComposeUp
 ```
+![Sbt run](./images/sbt-run.png "Sbt run")
 
 # Run Spark shell connected to yarn cluster
 
 ```bash
 docker exec -it spark-shell /spark/bin/spark-shell
 ```
+![Spark shell](./images/spark-shell.png "Spark shell")
 
 # Check Yarn history
 
 ```bash
 chrome|firefox http://localhost:8188
 ```
+![Yarn hisotry](./images/yarn-application-log.png "Yarn hisotry")
 
 # Check Spark history
 
 ```bash
 chrome|firefox http://localhost:18080
 ```
+![Spark history](./images/spark-history.png "Spark history")
 
 # Check hadoop hdfs namenode
 
 ```bash
 chrome|firefox http://localhost:9870
 ```
+![hdfs-ui](./images/hdfs-ui.png "hdfs-ui")
 
 # stop, remove, clean volumes and network of all cluster
 
